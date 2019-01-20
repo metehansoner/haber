@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/css/default.css"/>
+        <h:outputStylesheet name="/css/cssLayout.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 header">              
+                    <ui:insert name="header">
+                        <div class="top_menu">
+                            <div class=" col-md-12">
+                                <a href="#">#{sopDate.gunceltarih()}</a>
+                                <div class="float-right">
+                                    <a href="#"><button class="btn btn-success">Hoşgeldiniz #{admin},#{id},#{sopDate.decrypt(id)}</button></a>
+                                    <a href="#openModal"><button type="button" class="btn btn-danger">Çıkış Yap</button></a>
+                                    <a href="login?faces-redirect=true"><button type="button" class="btn btn-danger">login Yap</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </ui:insert>
+                </div>
+            </div>
+            <div class="row">
+                <div class=" menu">           
+                    <ui:insert name="menu">
+                        <nav class="navbar navbar-inverse">
+                            <div class="container-fluid">
+                                <div class="navbar-header">
+                                    <a class="navbar-brand" href="dashboard.xhtml">WebSiteName</a>
+                                </div>
+                                <ul class="nav navbar-nav">
+                                    <li><a href="haberduzenle.xhtml">Haber Düzenle</a></li>
+                                    <li><a href="haberekle.xhtml">Haber Ekle</a></li>
+                                    <li><a href="kullanıcıduzenle.xhtml">Kullanıcılar</a></li>
+                                    <li><a href="about.xhtml">About</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </ui:insert>               
+                </div>      
+            </div>
+            <div class="row">
+                <div class="col-md-12 sidebar">
+                    <ui:insert name="sidebar">
+                        <ul class="list-group card">
+                            <li class="list-group-item"><a href="#">Kullanıcı Profili</a></li>
+                            <li class="list-group-item"><a href="siteayarlar.xhtml">Site Ayarları</a></li>
+                            <li class="list-group-item"><a href="editorler.xhtml">Editörler</a></li>
+                            <li class="list-group-item"><a href="istatistikler.xhtml">İstatistikler</a></li>
+                            <li class="list-group-item"><a href="#">Hesap Ayarları</a></li>
+                        </ul>
+                    </ui:insert>  
+                </div>
+                <div class="col-md-12 content">
+                    <div >
+                        <ui:insert name="content">Content</ui:insert>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12 footer">
+                    <ui:insert name="footer">
+                        <span>© 2018 Copyright: metehann.com</span>       
+                    </ui:insert>  
+                </div>
+            </div>
+        </div>
+
+
+        <div id="openModal" class="modalDialog">
+            <div>	
+              
+                <h2>Çıkış Yap</h2>
+
+                <p>Çıkış Yapmak istediğinize emin misiniz ?</p>
+                <a href="logout?faces-redirect=true"><button  type="button" class="btn btn-danger">EVET</button></a>
+                <a href="#close"><button  type="button" class="btn btn-success">HAYIR</button></a>
+            </div>
+        </div>
+
+    </h:body>
+
+</html>

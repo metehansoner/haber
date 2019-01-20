@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Admintemplate.xhtml">
+
+            <ui:define name="content">
+                 <h:messages styleClass="alert alert-success" globalOnly="true"/>
+                <h:form enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="baslik">İçerik isim</label>
+                        <h:inputHidden value="#{documentController.document.adminid}" />
+                        <h:inputText  value="#{documentController.document.title}" a:autocomplete="off"  styleClass="form-control"/>
+                    </div>     
+                    <div class="form-group">
+                        <label for="exampleTextarea">Hakkında Sayfası Yazısı</label>
+                        <h:inputTextarea value="#{documentController.document.abouttext}" cols="30" rows="10" styleClass="form-control" />
+                    </div>                 
+                    <div class="form-group">
+                        <label for="exampleTextarea">Site Footer Yazısı</label>
+                        <h:inputTextarea value="#{documentController.document.footertext}" cols="30" rows="10" styleClass="form-control" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleTextarea">Site Başlık Yazısı</label>
+                        <h:inputTextarea value="#{documentController.document.sitetext}" cols="30" rows="10" styleClass="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">Site İconu Seçin</label>
+                        <h:inputFile value="#{documentController.doc}" styleClass="custom-file"></h:inputFile>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">Aktif Durum</label>
+                        <div class="form-check">
+                            <label class="form-check-label">   
+                                <h:selectOneRadio value="#{documentController.document.durum}">
+                                    <f:selectItem itemValue="1" itemLabel="EVET" />
+                                    <f:selectItem itemValue="0" itemLabel="HAYIR" />
+                                </h:selectOneRadio>
+                            </label>
+                        </div>
+                    </div>
+                    <h:commandButton action="#{documentController.upload}" value="upload" styleClass="btn btn-primary"></h:commandButton>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

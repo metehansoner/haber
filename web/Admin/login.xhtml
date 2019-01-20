@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+        <link href="../resources/css/loginpage.css" rel="stylesheet" type="text/css"/>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    </head>
+    <body>
+        <div class="login-page">
+            <div class="form">
+                <h1><span class="label label-default">Admin Girişi</span></h1>
+                <h:form class="card-body" >
+                    <h:message styleClass="error" for="email" style="color: red;"/>
+                    <h:messages styleClass="errorMessage" globalOnly="true" style="color: red" />
+                    <h:inputText id="email"  value="#{adminController.admin.email}" a:placeholder="E-mail" a:autocomplete="off" validator="customValidator">
+                        <f:validator validatorId="customValidator"/>
+                    </h:inputText>
+                    <h:inputText  value="#{adminController.admin.password}" a:placeholder="Password" a:autocomplete="off" a:type="password"/>
+                    <div class="g-recaptcha" data-sitekey="6LfUOYkUAAAAAN7zqcSBMOENZMQScoIUxWY2oWr9" style="margin-left: 28px;"></div>
+                    <h:commandButton action="#{adminController.login()}" value="Login" styleClass="btn btn-success" a:style="margin-top:10px"></h:commandButton>
+                </h:form>
+            </div>
+        </div>
+        <c:set var="age" value="26"/>
+
+        <c:if test="${age>25}">
+            <div class="alert alert-primary" role="alert">
+                A simple primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+            </div>
+        </c:if>
+        <c:if test="${age==25}">
+            <div class="alert alert-warning" role="alert">
+                A simple warning alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+            </div>
+        </c:if>
+
+        <c:forEach var="counter" begin="1" end="10">
+            <h:outputText value="${counter}"></h:outputText>
+        </c:forEach>
+
+        <a href="../index.xhtml?id=#{sopDate.encrypt(5)}&amp;name=#{5}"><button type="button" class="btn btn-dark">Dark</button></a>
+    </body>
+</html>
